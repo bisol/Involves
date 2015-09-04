@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Logger;
 
 import org.junit.Assert;
@@ -41,6 +43,41 @@ public class PojomizerTest {
 				+ "-------------------------------------------------------------------------");
 		File targetFile = new File("target/f.csv");
 		Object[] pojos = {new ValidPojo(), new ValidPojo2(), new ValidPojo3(), new ValidPojo4()};
+		OutputStream outStream = new Pojomizer().serializePojosToFile(targetFile, pojos);
+		outStream.close();
+		
+		BufferedReader bufferedReader = new BufferedReader(new FileReader(targetFile));
+		
+		String line = bufferedReader.readLine();
+		Assert.assertEquals("field1,fieldC,fieldS,fieldE,fieldB,attr1,attr2", line);
+		
+		line = bufferedReader.readLine();
+		Assert.assertEquals("1,c,S,,,,", line);
+		
+		line = bufferedReader.readLine();
+		Assert.assertEquals("1,2.4,S,constant1,true,,", line);
+		
+		line = bufferedReader.readLine();
+		Assert.assertEquals(",teste,,,,,", line);
+		
+		line = bufferedReader.readLine();
+		Assert.assertEquals(",,,,,teste,teste 2", line);
+		
+		bufferedReader.close();
+	}
+
+	@Test
+	public void testValidCollection()
+	throws IOException, ReflectiveOperationException {
+		logger.info("-------------------------------------------------------------------------\n"
+				+ "testValidCollection\n"
+				+ "-------------------------------------------------------------------------");
+		File targetFile = new File("target/f.csv");
+		Collection<Object> pojos = new ArrayList<>();
+		pojos.add(new ValidPojo());
+		pojos.add(new ValidPojo2());
+		pojos.add(new ValidPojo3());
+		pojos.add(new ValidPojo4());
 		OutputStream outStream = new Pojomizer().serializePojosToFile(targetFile, pojos);
 		outStream.close();
 		
