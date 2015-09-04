@@ -71,9 +71,9 @@ os.close(); // weird specification requisite
 
 Or supply our own OutputStream
 ```  
-File target = getFile();// your code here
-Object[] pojo = getPojos();// your code here
-OutputStream os = pojomizer.serializePojosToStream(target, pojo);
-os.close(); // weird specification requisite
+Object[] pojo = getPojos();			// your code here
+OutputStream os = getOutputStream();// your code here
+pojomizer.serializePojosToStream(target, pojo);
+os.close();
 ```
 
