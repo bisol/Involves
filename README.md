@@ -56,7 +56,7 @@ os.close(); // weird specification requisite
 To serialize a Collection of POJOs to a file:
 ```  
 File target = getFile();// your code here
-Collection<Object> pojo = getPojos();// your code here
+Collection<Object> pojos = getPojos();// your code here
 OutputStream os = pojomizer.serializePojosToFile(target, pojos);
 os.close(); // weird specification requisite
 ```
@@ -64,16 +64,16 @@ os.close(); // weird specification requisite
 We can also use arrays
 ```  
 File target = getFile();// your code here
-Object[] pojo = getPojos();// your code here
-OutputStream os = pojomizer.serializePojosToFile(target, pojo);
+Object[] pojos = getPojos();// your code here
+OutputStream os = pojomizer.serializePojosToFile(target, pojos);
 os.close(); // weird specification requisite
 ```
 
 Or supply our own OutputStream
 ```  
-Object[] pojo = getPojos();			// your code here
+Object[] pojos = getPojos();			// your code here
 OutputStream os = getOutputStream();// your code here
-pojomizer.serializePojosToStream(target, pojo);
+pojomizer.serializePojosToStream(os, pojos);
 os.close();
 ```
 
