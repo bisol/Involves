@@ -11,9 +11,12 @@ So, here goes my take on it:
 - What is a complex object: does String count? What about enums and primitive wrappers? I choose to support primitive types, their wrappers, String and enums.
 - How to handle *null* values: One might write *"null"*, or an empty string. I went with the empty string.
 
-The class diagram can be found [class diagram.png](class diagram.png)
+The class diagram can be found here: [class diagram.png](class diagram.png)
 
 ## Building
 You must have Maven and a JDK (minimum 1.7) installed.
 As a Maven project, your IDE should be able to handle the building process. 
-Or, on a terminal, go to the project root and type: `mvn clean install`
+Or, on a terminal, go to the project root and type:
+```
+mvn clean install
+```
